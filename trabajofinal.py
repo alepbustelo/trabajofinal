@@ -1,6 +1,6 @@
 import streamlit as st
 from sklearn.base import BaseEstimator, TransformerMixin
-import seaborn as sns
+import seaborn
 import matplotlib.pyplot as plt
 import pickle
 
