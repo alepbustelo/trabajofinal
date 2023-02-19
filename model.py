@@ -12,17 +12,17 @@ import pickle
 "Existen registros de datos de los pasajes del Titanic y sus caracteristicas"
 "Tomando como referencia estas caracteristicas queremos calcular que le hubiese"
 "pasado a un hipotetico pasajero inventado."
-titanic = seaborn.load_dataset('titanic')
+df = pd.read_csv('Train.csv')
 
 "Aqui tenemos un ejemplo de la informacion cruda disponible."
 
-titanic
+df
 
 "Como vemos hay varias columnas, algunas con datos numericos, otros categoricos y algunos redundantes."
 "Lo primero que vamos a hacer es seleccionar las columnas que nos parecen relevantes, por ejemplo 'embarked'"
 " y 'embarked_town' son lo mismo."
 
-selected_columns = ['survived','pclass','sex','age','sibsp','parch','fare','embarked']
+"""selected_columns = ['survived','pclass','sex','age','sibsp','parch','fare','embarked']
 
 "Las columnas que elegimos conservar son:"
 
@@ -95,4 +95,4 @@ for name in dummies_encoder:
 st.write(values)
 
 "El valor del modelo para el caso seleccionado es: "
-st.write(modelo_matematicas.predict([values]))
+st.write(modelo_matematicas.predict([values]))"""
