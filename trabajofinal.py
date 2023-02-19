@@ -1,2 +1,1 @@
-import streamlit
-st.write(hola)
+st.write("hola")
