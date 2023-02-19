@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pickle
 
 
-titanic = sns.load_dataset('titanic')
+titanic = seaborn.load_dataset('titanic')
 
 st.write(titanic)
 
