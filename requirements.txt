@@ -1,3 +1,2 @@
 streamlit
-seaborn
 sckit-learn
