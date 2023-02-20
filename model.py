@@ -7,6 +7,23 @@ import numpy as np
 import pandas as pd
 import pickle
 
+<table><tr>
+    <td style=" font-size:18px;">
+
+
+<p>A veces $f$ no se puede expresar en términos de la hipótesis.</p>
+
+<p>Por ejemplo, si usamos un árbol de decisión como clasificador base, este trabaja formando <b>particiones rectilíneas</b> del espacio de features.</p>
+
+<p>Pero si $f$ es una línea diagonal, entonces no puede ser representada por un número finito de segmentos rectilíneos.</p>
+
+<p>Por lo tanto, el límite de decisión verdadero, no puede ser expresado por un árbol de decisión.</p>
+
+<p>Sin embargo, todavía puede ser posible aproximar $f$, e incluso expandir el espacio de funciones representables, usando métodos de ensamble.</p>
+
+</td>
+<td style="width:40%;">
+
 "Vamos a mostrar un ejemplo de como funciona un modelo de prediccion."
 "Para eso vamos a usar un dataset con datos del Titanic y su hundimiento"
 "Existen registros de datos de los pasajes del Titanic y sus caracteristicas"
