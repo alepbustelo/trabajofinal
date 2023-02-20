@@ -27,7 +27,7 @@ df
 
 st.write("GRAFICO ILUSTRATIVO")
 
-g = sns.countplot(data=data, y="marital_status",palette="rainbow" , order = data['marital_status'].value_counts().index).set_title("Estado civil",
+g = seaborn.countplot(data=data, y="marital_status",palette="rainbow" , order = data['marital_status'].value_counts().index).set_title("Estado civil",
                   fontdict = {'fontsize': 40,       # Tamaño
                               'fontweight': 'bold', # Estilo
                               'color': 'black'})      # Color
