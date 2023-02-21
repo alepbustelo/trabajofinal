@@ -16,7 +16,7 @@ df = pd.read_csv('Train.csv')
 
 #2. Sidebar
 with st.sidebar:
-    selected = streamlit_option_menu(
+    selected = streamlit_option_menu:(
         menu_title='Main menu',
         options=['Home', 'Plots', 'Model'],
     )
