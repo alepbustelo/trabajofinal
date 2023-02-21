@@ -65,7 +65,7 @@ elif selected == 'Plots':
     # pie chart
     col_piechart = st.sidebar.selectbox('Pie Chart',['bank_account','gender_of_respondent','cellphone_access'])
 
-    def pie_plot():d
+    def pie_plot():
         fig = plt.figure(figsize=(10, 4))
         colors = sns.color_palette('rainbow')[0:5]
         data_pie = df[col_piechart].value_counts()
