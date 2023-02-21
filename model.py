@@ -56,11 +56,9 @@ elif selected == 'Plots':
                                       'color': 'black'})
         st.pyplot(fig)
     # Heatmap
-    col_heatmap = st.sidebar.selectbox('Heatmap')
     def heatmap_plot(): 
         fig = plt.figure(figsize=(15, 8))
         g = sns.heatmap(df.corr(),annot=True, cmap="YlGnBu")
-    
         st.pyplot(fig)
     
     # pie chart
@@ -84,6 +82,8 @@ elif selected == 'Plots':
         count_plot()
         st.header('Pie chart')
         pie_plot()
+        st.header('Heatmap')
+        heatmap_plot()
 
 # Pagina 3 = Modelo
 elif selected == 'Model':
