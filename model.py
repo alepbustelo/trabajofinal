@@ -56,8 +56,8 @@ elif selected == 'Plots':
                                       'color': 'black'})
         st.pyplot(fig)
     # Heatmap
-    col_heatmap = st.sidebar.selectbox('Heatmap')
-    def count_plot(): 
+    col_heatmap = st.sidebar.selectbox('Heatmap', ['All features'])
+    def heatmap_plot(): 
         fig = plt.figure(figsize=(15, 8))
         g = sns.heatmap(df.corr(),annot=True, cmap="YlGnBu")
     
