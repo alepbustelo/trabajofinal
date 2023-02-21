@@ -1,5 +1,5 @@
 import streamlit as st
-import seaborn as sns
+import seaborn
 from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator, TransformerMixin
 import matplotlib.pyplot as plt
@@ -50,7 +50,7 @@ elif selected == 'Plots':
     col_countplot = st.sidebar.selectbox('Countplot column',['country','location_type','household_size','relationship_with_head','marital_status','education_level','job_type'])
     def count_plot(): 
         fig = plt.figure(figsize=(15, 8))
-        g = sns.countplot(data=df, y=col_countplot,palette="rainbow", order = df[col_countplot].value_counts().index).set_title(col_countplot,
+        g = seaborn.countplot(data=df, y=col_countplot,palette="rainbow", order = df[col_countplot].value_counts().index).set_title(col_countplot,
                           fontdict = {'fontsize': 40,      
                                       'fontweight': 'bold', 
                                       'color': 'black'})
