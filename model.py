@@ -17,7 +17,7 @@ df = pd.read_csv('Train.csv')
 #2. Sidebar
 with st.sidebar:
     selected = option_menu(
-        menu_title='Main menu',
+        menu_title='Menu',
         options=['Home', 'Plots', 'Model'],
     )
 
@@ -47,7 +47,7 @@ elif selected == 'Plots':
     st.title('Plots')
 
     #countplot
-    col_countplot = st.sidebar.selectbox('Countplot column',['country','location_type','household_size','relationship_with_head','marital_status','education_level','job_type'])
+    col_countplot = st.sidebar.selectbox('Countplot',['country','location_type','household_size','relationship_with_head','marital_status','education_level','job_type'])
     def count_plot(): 
         fig = plt.figure(figsize=(15, 8))
         g = sns.countplot(data=df, y=col_countplot,palette="rainbow", order = df[col_countplot].value_counts().index).set_title(col_countplot,
@@ -55,10 +55,16 @@ elif selected == 'Plots':
                                       'fontweight': 'bold', 
                                       'color': 'black'})
         st.pyplot(fig)
-
-
+    # Heatmap
+    col_heatmap = st.sidebar.selectbox('Heatmap')
+    def count_plot(): 
+        fig = plt.figure(figsize=(15, 8))
+        g = sns.heatmap(data.corr(),annot=True, cmap="YlGnBu")
+    
+    st.pyplot(fig)
+    
     # pie chart
-    col_piechart = st.sidebar.selectbox('Pie chart column',['bank_account','gender_of_respondent','cellphone_access'])
+    col_piechart = st.sidebar.selectbox('Pie Chart',['bank_account','gender_of_respondent','cellphone_access'])
 
     def pie_plot():
         fig = plt.figure(figsize=(10, 4))
