@@ -7,9 +7,9 @@ import numpy as np
 import pandas as pd
 import pickle
 
+st.title('Financial inclusion')
 
-
-"Vamos a trabajar con un dataset de inclusion sobre inclusion financiera en africa"
+"Vamos a trabajar con un dataset de inclusion financiera en africa"
 
 
 "A continuacion podemos ver como esta compuesto de set de datos"
@@ -25,10 +25,59 @@ df
 
 "Como vemos hay varias columnas, algunas con datos numericos, otros categoricos y algunos redundantes."
 
-st.write("GRAFICO ILUSTRATIVO")
+def inputs():
+    st.sidebar.header('Model inputs')
+    country = st.sidebar.selectbox('Country', df.country.unique())	
+    location_type = st.sidebar.selectbox('Location type', df.location_type.unique())
+    cellphone_access = st.sidebar.selectbox('Cellphone access', df.cellphone_access.unique())
+    household_size = st.sidebar.number_input('Household size', 1) 
+    age_of_respondent = st.sidebar.number_input('Age', 18) 
+    gender_of_respondent = st.sidebar.selectbox('Gender', df.gender_of_respondent.unique())
+    relationship_with_head = st.sidebar.selectbox('Relationship with head', df.relationship_with_head.unique())
+    marital_status = st.sidebar.selectbox('Marital status', df.marital_status.unique()) 
+    education_level = st.sidebar.selectbox('Education level', df.education_level.unique())
+    job_type = st.sidebar.selectbox('Job type', df.job_type.unique()) 
+    button = st.sidebar.button('Try model!')
+    return country, location_type, cellphone_access, household_size, age_of_respondent, gender_of_respondent, relationship_with_head, marital_status, education_level, job_type, button
 
-seaborn.countplot(data=data, y="marital_status",palette="rainbow" , order = data['marital_status'].value_counts().index).set_title("Estado civil",
-                  fontdict = {'fontsize': 40,       # Tamaño
-                              'fontweight': 'bold', # Estilo
-                              'color': 'black'})      # Color
 
+def get_data(country, location_type, cellphone_access, household_size, age_of_respondent, gender_of_respondent, relationship_with_head, marital_status, education_level, job_type):
+    data_inputs = {'country': country, 
+            'location_type': location_type, 
+            'cellphone_access': cellphone_access, 
+            'household_size': household_size, 
+            'age_of_respondent':age_of_respondent, 
+            'gender_of_respondent': gender_of_respondent, 
+            'relationship_with_head': relationship_with_head, 
+            'marital_status': marital_status, 
+            'education_level': education_level, 
+            'job_type': job_type}
+    data= pd.DataFrame(data_inputs, index=[0])
+    return data
+
+
+def main():
+    country, location_type, cellphone_access, household_size, age_of_respondent, gender_of_respondent, relationship_with_head, marital_status, education_level, job_type, button = inputs()
+    if button:
+        st.header('Probando el modelo con los datos ingresados')
+        st.write('') 
+        trial_data = get_data(country, location_type, cellphone_access, household_size, age_of_respondent, gender_of_respondent, relationship_with_head, marital_status, education_level, job_type)
+        
+        # LLamo al pkl con el modelo
+        with open('./financial_inc.pkl', 'rb') as clf_inclusion:
+            modelo_inclusion = pickle.load(clf_inclusion)
+        # Prediccion usando el trial data con lo insertado en el form
+        if modelo_inclusion.predict(trial_data) == 1:
+            st.write('---')
+            st.write('El individuo ya se encuentra bancarizado')
+            st.write('---')
+        else:
+            st.write('---')
+            st.write('El individuo no se encuentra bancarizado')
+            st.write('---')
+
+            
+
+
+if __name__ == '__main__':
+    main()
