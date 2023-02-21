@@ -56,12 +56,11 @@ elif selected == 'Plots':
                                       'color': 'black'})
         st.pyplot(fig)
     # Heatmap
-    col_heatmap = st.sidebar.selectbox('Heatmap', ['All features'])
     def heatmap_plot(): 
         fig = plt.figure(figsize=(15, 8))
         g = sns.heatmap(df.corr(),annot=True, cmap="YlGnBu")
     
-    st.pyplot(fig)
+        st.pyplot(fig)
     
     # pie chart
     col_piechart = st.sidebar.selectbox('Pie Chart',['bank_account','gender_of_respondent','cellphone_access'])
