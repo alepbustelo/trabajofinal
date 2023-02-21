@@ -5,7 +5,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import pickle as pkl
+import pickle
 from streamlit_option_menu import option_menu
 import streamlit.components.v1 as html
 from  PIL import Image
@@ -132,7 +132,7 @@ elif selected == 'Model':
 
             # LLamo al pkl con el modelo
             with open('./financial_inclusion.pkl', 'rb') as clf_inclusion:
-                modelo_inclusion = pkl.load(clf_inclusion)
+                modelo_inclusion = pickle.load(clf_inclusion)
             # Prediccion usando el trial data con lo insertado en el form
             if modelo_inclusion.predict(trial_data) == 1:
                 st.write('---')
