@@ -80,7 +80,7 @@ elif selected == 'Plots':
                   fontdict = {'fontsize': 30,       
                               'fontweight': 'bold',
                               'color': 'black'})      
-plt.show()
+        st.pyplot(fig)
     # Heatmap
     def heatmap_plot(): 
         fig = plt.figure(figsize=(15, 8))
