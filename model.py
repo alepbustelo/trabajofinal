@@ -73,7 +73,14 @@ elif selected == 'Plots':
         plt.pie(data_pie, labels = labels, colors = colors, autopct='%.0f%%')
         st.pyplot(fig)
 
-
+    def density():
+        fig = plt.figure(figsize=(15, 8))
+        sns.set_style('whitegrid')
+        sns.kdeplot(data=data, x='age_of_respondent', shade=True).set_title("Densidad de las edades muestreadas",
+                  fontdict = {'fontsize': 30,       
+                              'fontweight': 'bold',
+                              'color': 'black'})      
+plt.show()
     # Heatmap
     def heatmap_plot(): 
         fig = plt.figure(figsize=(15, 8))
@@ -82,6 +89,8 @@ elif selected == 'Plots':
     
 
     if __name__ == '__main__':
+        st.header('Density')
+        density()
         st.header('Countplot')
         count_plot()
         st.header('Pie chart')
